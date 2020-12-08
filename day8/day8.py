@@ -37,7 +37,6 @@ def goThrough():
     a = 0
     accumulator = 0
     alreadyRun = [False]*len(input)
-    replaceOne()
     #print(input)
     while(a < len(input)):
         line = input[a]
@@ -52,6 +51,7 @@ def goThrough():
             if(part1):
                 print("Part 1:" + str(accumulator))
                 part1 = False
+            replaceOne()
             return goThrough()
         alreadyRun[a] = True
         if(op == "nop"):
@@ -66,4 +66,4 @@ def goThrough():
 
 
 
-print("Num" + str(goThrough()))
+print("Part 2:" + str(goThrough()))
