@@ -36,11 +36,6 @@ for jolt in inputs:
     else:
         print("no solution")
 
-#gameDiff = gameJolt - curJolt
-#if(gameDiff == 3):
-    #num3s += 1
-#elif(gameDiff == 1):
-    #num1s += 1
 print("nums: " + str(num1s) + " " + str(num3s))
 print("part 1 " + str(num1s * num3s))
 
