@@ -1,0 +1,5 @@
+#lang racket
+(define ns '( 17 41 983 29 19 23 397 37 13))
+(define as '( 17 34 966 10 -17 -17 349 -17 -48))
+(require (only-in math/number-theory solve-chinese))
+(solve-chinese as ns)
