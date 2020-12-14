@@ -6,6 +6,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description='AoC solution')
 parser.add_argument('--file', '-f', help='File to run the program on, default input.txt', type = str, default="input.txt")
+parser.add_argument('--verbose', '-v', help = "0 if you want it to be silent, 1 if you want output, default 0", type = int, default = 0)
 args = parser.parse_args()
 
 filename = os.path.normpath(os.path.join(os.path.dirname(__file__), args.file))
@@ -36,11 +37,11 @@ def part1():
                     #zeroMask = zeroMask & ~(2** i)
                     zeroMask += 2** (35 - i)
             zeroMask = ~zeroMask
-                    
-            print(els[2].strip())
-            print('{0:036b}'.format(oneMask))
-            print('{0:036b}'.format(zeroMask))
-            print("_________________________________")
+            if(args.verbose == 1):
+                print(els[2].strip())
+                print('{0:036b}'.format(oneMask))
+                print('{0:036b}'.format(zeroMask))
+                print("_________________________________")
             continue
         addr = int(els[0].strip("mem[").strip("]"))
         val = int(els[2])
@@ -49,7 +50,8 @@ def part1():
         memory[addr] = val
     sum = 0
     for value in memory:
-        print(str(value) + ": " + str(memory[value]))
+        if(args.verbose == 1):
+            print(str(value) + ": " + str(memory[value]))
         sum+= memory[value]
     return sum
     
@@ -74,7 +76,6 @@ def part2():
             continue
         addr = int(els[0].strip("mem[").strip("]"))
         val = int(els[2])
-        print(val)
         addr = addr | oneMask
         for i in range(2 ** len(xs)):
             theAddr = addr
@@ -89,16 +90,18 @@ def part2():
             theAddr = theAddr | tOneMask
             theAddr = theAddr & tZeroMask
             #print(theVal)
-            print('{0:036b}'.format(theAddr) + ", decimal: " + str(theAddr))
+            if(args.verbose == 1):
+                print('{0:036b}'.format(theAddr) + ", decimal: " + str(theAddr))
             memory[theAddr] = val
            
     theSum = 0
     for value in memory:
-        print(str(value) + ": " + str(memory[value]))
+        if(args.verbose == 1):
+            print(str(value) + ": " + str(memory[value]))
         theSum+= memory[value]
     return theSum
     
    
-#print("Part 1 " + str(part1()))
+print("Part 1 " + str(part1()))
 print("Part 2 " + str(part2()))
 
