@@ -139,7 +139,7 @@ def expandRule(ruleNum):
                 
     return expandedRule
 
-def createRegex(ruleNum):
+def createRegEx(ruleNum):
     rule = rules[ruleNum]
     done = False
     while not done:
@@ -179,7 +179,7 @@ def part1():
     num = 0
     #print(rules[104])
     #sys.exit(0)
-    expr = createRegex(0)
+    expr = createRegEx(0)
     log(expr)
     for message in messages:
         if(re.fullmatch(expr, message)):
@@ -199,17 +199,17 @@ def part2():
     rules[11] = " 42 31 "
     #BUT IT CAN DETECT PALINDROMES OF FINITE LENGTH, yeah it's big brain time
     
-    rules[42] = " " + createRegex(42) + " "
-    rules[31] = " " + createRegex(31) + " "
+    rules[42] = " " + createRegEx(42) + " "
+    rules[31] = " " + createRegEx(31) + " "
     
     for i in range(2, messLen):
         #rules[11] = rules[11] + " | " + ((" " + rules[42] + " ")) * i + ((" " + rules[31] + " ") * i)
         rules[11] = rules[11] + " | " + ((" 42 ")) * i + ((" 31 ") * i)
-    rules[11] = createRegex(11)
-    #print(createRegex(11))
+    rules[11] = createRegEx(11)
+    #print(createRegEx(11))
     
     #sys.exit(0)
-    expr = createRegex(0)
+    expr = createRegEx(0)
     log(expr)
     for message in messages:
         if(re.fullmatch(expr, message)):
@@ -219,10 +219,7 @@ def part2():
             log(message + " is invalid!")
     return num
 
-  
-    
-#print(createRegex(42)) 
    
-#print("Part 1 " + str(part1()))
+print("Part 1 " + str(part1()))
 print("Part 2 " + str(part2()))
 
