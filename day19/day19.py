@@ -18,7 +18,6 @@ except FileNotFoundError:
     sys.exit(1)
     
 #inputs = inputFile.read().split("\n")
-sys.setrecursionlimit(3500)
 def log(message):
     if(args.verbose > 0):
         print(message)
